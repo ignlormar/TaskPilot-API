@@ -13,3 +13,4 @@ class Ubicacion(Base):
 
     delegacion = relationship("Delegacion", back_populates="ubicaciones")
     tareas = relationship("Tarea", back_populates="ubicacion")
+    cliente = relationship("Cliente", back_populates="ubicaciones")

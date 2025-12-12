@@ -10,3 +10,4 @@ class Cliente(Base):
     prioridad = Column(Integer)
 
     tareas = relationship("Tarea", back_populates="cliente")
+    ubicaciones = relationship("Ubicacion", back_populates="cliente")

@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
+from sqlalchemy import Column, Integer, String, Date, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 from app.database import Base
 
@@ -9,7 +9,7 @@ class Tarea(Base):
     nombre = Column(String, nullable=False)
     cliente_id = Column(Integer, ForeignKey("clientes.id"))
     ubicacion_id = Column(Integer, ForeignKey("ubicaciones.id"))
-    fecha_limite = Column(DateTime)
+    fecha_limite = Column(Date)
     fecha_asignada = Column(DateTime)
     tecnicos_requeridos = Column(Integer, nullable=False)
 

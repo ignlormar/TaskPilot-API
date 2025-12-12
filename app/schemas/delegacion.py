@@ -1,19 +1,23 @@
-from pydantic import BaseModel
-from typing import Optional
+from pydantic import BaseModel, ConfigDict
+from typing import Optional, List
 
-class DelegacionBase(BaseModel):
+from app.schemas.tecnico import TecnicoShort
+
+
+class ORMBase(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+class DelegacionBase(ORMBase):
     nombre: str
     direccion: str
 
 class DelegacionCreate(DelegacionBase):
     pass
 
-class DelegacionUpdate(BaseModel):
+class DelegacionUpdate(ORMBase):
     nombre: Optional[str] = None
     direccion: Optional[str] = None
 
 class Delegacion(DelegacionBase):
     id: int
-
-    class Config:
-        orm_mode = True
+    tecnicos: List[TecnicoShort] = []
